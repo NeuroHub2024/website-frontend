@@ -1,11 +1,11 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
 
+import Navbar from '../components/Navbar'
+import LandingPage from './LandingPage'
 const Home = () => {
     return (
         <>
             <Navbar />
-            <h1>Hello from NeuroHub</h1>
+            <LandingPage/>
         </>
     )
 }

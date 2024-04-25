@@ -1,0 +1,126 @@
+.main {
+    display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 80vh;
+    
+  }
+  
+  .div1 {
+    grid-row: 1; /* Place div1 in the first row */
+   
+    width:800px;
+    padding:50px ;
+   
+  }
+  .bigtext{
+     font-size: 50px;
+     
+     margin-top:15px ;
+     display: flex;
+
+  }
+  
+  .div2 {
+    grid-row: 1; /* Place div2 in the first row */
+    
+    
+    
+    padding-left: 0px;
+   
+    
+    margin-left:0px;
+    width:900px
+  }
+
+  .image-boy{
+    height:500px;
+    width: 500px;
+   
+  }
+  
+  /* Optional: Add some styling to the buttons */
+  .buttons {
+    display: flex;
+  
+    margin-top: 30px;
+   
+    height:60px;
+    
+  }
+  
+  .button2 {
+    
+        color: var(--color-bg-highlight);
+        background-color: var(--color-btn-secondary);
+        border: none;
+        outline: none;
+        border-radius: 1.5rem;
+        font-size:15px;
+        width:170px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        
+  }
+.button2:hover{
+    background-color: var(--color-btn-primary-hover);
+}
+.button1{
+    color:var(--color-btn-secondary);
+    background-color: var(--color-bg-highlight);
+    border: none;
+    outline: none;
+    border-radius: 1.5rem;
+    font-size: 15px;
+    width:170px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    margin-right: 80px;
+    
+}
+
+.button1:hover{
+    background-color: var(--color-btn-secondary-hover);
+}
+
+
+.container {
+    position: relative;
+  }
+  
+  .text {
+    font-size: 50px;
+  }
+  
+  .cap {
+    display:flex;
+    height:60px;
+    width:50px;
+    position: absolute;
+    top: 0;
+    left:-19px;
+    
+    z-index: 1; /* Higher z-index to overlay the text */
+  }
+  
+  @media(max-width:1000px){
+        .main{
+          flex-wrap:wrap;
+          align-items: center;
+        }
+        .bigtext{
+          font-size: 45px;
+        }
+        .text{
+          font-size: 45px;
+        }
+        
+        .div1{
+          width:fit-content;
+
+        }
+        .div2{
+          text-align: center;
+        }
+        
+  }
