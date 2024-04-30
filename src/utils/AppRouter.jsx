@@ -7,13 +7,16 @@ import Navbar from '../components/Navbar.jsx'
 
 const AppRouter = () => {
   return (
-    <BrowserRouter>
+    <>
       <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/dashboard' element={<Dashboard />} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   )
 }
 

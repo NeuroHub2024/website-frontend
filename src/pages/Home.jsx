@@ -1,9 +1,11 @@
 import React from 'react'
 
+import LandingPage from './LandingPage'
 const Home = () => {
     return (
         <>
-            <h1>Hello from NeuroHub</h1>
+
+            <LandingPage />
         </>
     )
 }
