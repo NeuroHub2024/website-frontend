@@ -1,0 +1,13 @@
+.dashboard-avatar-box {
+  margin: 2rem 0rem;
+  width: 100%;
+}
+
+.dashboard-avatar-box div {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+}
