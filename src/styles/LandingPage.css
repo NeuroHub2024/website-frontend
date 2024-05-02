@@ -13,12 +13,22 @@
     padding:50px ;
    
   }
-  .bigtext{
+  .bigtext1{
      font-size: 50px;
+     margin-left:20%;
+     margin-top:15px ;
+     display: flex;
+     
+  }
+  .bigtext2{
+    font-size: 45px;
      
      margin-top:15px ;
      display: flex;
-
+    margin-left:20%;
+  }
+  .smalltext{
+    margin-left: 20%;
   }
   
   .div2 {
@@ -76,6 +86,7 @@
     cursor: pointer;
     transition: 0.2s ease;
     margin-right: 80px;
+    margin-left: 20%;
     
 }
 
@@ -108,7 +119,7 @@
           flex-wrap:wrap;
           align-items: center;
         }
-        .bigtext{
+        .bigtext1{
           font-size: 45px;
         }
         .text{
