@@ -1,0 +1,112 @@
+.fullpage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    
+}
+.box{
+    display:flex;
+    width:700px;
+    border: 2px; /* Border for the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Floating effect with shadow */
+    border-radius: 8px; /* Border radius for curved corners */
+    overflow: hidden; /* Ensures shadow does not overflow */
+   
+    
+    
+}
+
+
+
+.imagebox{
+    display: flex;
+    width:43%;
+   
+}
+
+.image{
+    height: 400px;
+    width:300px;
+
+}
+.big_text{
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    margin-left:20%;
+    margin-right: 20%;
+    color: var(--color-bg-highlight);
+}
+.form{
+    width: 60%;
+    display: flex;
+   
+    justify-content: center;
+}
+
+.formgroup{
+    outline: none;
+    border-radius: 10px; /* Make borders curved */
+     padding-left: 5px;
+     
+    width:240px;
+    margin:10px;
+    height: 30px;
+    border-color: var(--color-btn-secondary-hover);
+
+}
+
+.button{
+     color:var(--color-btn-secondary);
+    background-color: var(--color-bg-highlight);
+    border: none;
+    outline: none;
+    border-radius: 1.5rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+    margin-left: 29%;
+    margin-top: 10%;
+    width:100px;
+}
+.button:hover{
+    background-color: var(--color-btn-secondary-hover);
+}
+.sign{
+    font-size: 1rem;
+    margin-top: 5px;
+    margin-left:10%;
+}
+.signlink{
+     color: var(--color-bg-highlight);
+}
+
+@media(max-width:700px){
+    .image{
+        height: 0%;
+        width: 0%;
+    }
+    .imagebox{
+        width:0%;
+        
+    }
+    .box{
+        margin-left: 5%;
+        margin-right: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60vh;
+        
+    }
+    .form{
+        width: 100%;
+    }
+    .formgroup{
+        width:150px;
+    }
+    
+}
+
+
