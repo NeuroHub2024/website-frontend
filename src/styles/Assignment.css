@@ -1,0 +1,29 @@
+/* Assignment.css */
+
+.assignment-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.assignment-description-container {
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.assignment-upload-container {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .assignment-container {
+    flex-direction: row;
+  }
+  .assignment-description-container {
+    flex: 1;
+    margin-right: 24px;
+  }
+}

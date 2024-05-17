@@ -1,0 +1,29 @@
+.upload-assignment-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 3rem;
+}
+
+.upload-assignment-container button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 25px;
+  background-color: gainsboro; /* Gradient background */
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.upload-assignment-container button:hover {
+  background: linear-gradient(
+    to right,
+    #2c9e3e,
+    #4caf50
+  ); /* Gradient background (hover state) */
+}
