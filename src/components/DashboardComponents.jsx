@@ -1,23 +1,7 @@
 import React from 'react';
-import { Avatar, Breadcrumb, Layout, Space, Typography, theme } from 'antd';
-// import UserTable from './UserTable/UserTable';
+import { Avatar, Layout, Space, Typography, theme } from 'antd';
 const { Content, Footer } = Layout;
 import "../styles/DashboardComponents.css"
-
-
-
-const breadItems = [
-    {
-        key: 'home',
-        href: '/',
-        title: 'Home',
-    },
-    {
-        key: 'user',
-        href: '/user',
-        title: 'User',
-    },
-];
 
 const DashboardComponents = () => {
 

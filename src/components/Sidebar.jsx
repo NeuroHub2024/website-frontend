@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./SideBar.css"
+import "../styles/SideBar.css"
 import {
     AppstoreOutlined,
     MenuFoldOutlined,
@@ -20,7 +20,7 @@ function getItem(label, key, icon) {
 const items = [
 
     getItem(<Link to={"/"} >Dashboard</Link>, 'sub1', <AppstoreOutlined />),
-    getItem(<Link to={"/users"} >Users</Link>, 'sub2', <UserOutlined />),
+    getItem(<Link to={"/assignment"} >Assignment</Link>, 'sub2', <UserOutlined />),
     getItem(<Link to={"/stats"} >Stats</Link>, 'sub3', <UserOutlined />),
     getItem(<Link to={"/socialmedia"} >Social Media</Link>, 'sub4', <UserOutlined />),
     getItem(<Link to={"/trainer"} >Trainer</Link>, 'sub5', <UserOutlined />),
