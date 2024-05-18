@@ -4,6 +4,7 @@ import Home from '../pages/Home'
 import Navbar from '../components/Navbar.jsx'
 import Login from '../pages/Login.jsx'
 import Signup from '../pages/Signup.jsx'
+import WebcamFaceDetection from '../pages/WebcamFaceDetection.jsx'
 import Assignment from '../pages/Assignment.jsx'
 import DashboardComponents from '../components/DashboardComponents.jsx'
 import SideBar from '../components/Sidebar.jsx'
@@ -33,9 +34,9 @@ const AppRouter = () => {
             <Layout style={{ minHeight: '100vh' }} >
               <SideBar />
               <Routes>
-
                 <Route path='/' element={<DashboardComponents />} />
                 <Route path='/assignment' element={<Assignment />} />
+                <Route path='/Test' element={<WebcamFaceDetection/>}/>
               </Routes>
 
             </Layout>
