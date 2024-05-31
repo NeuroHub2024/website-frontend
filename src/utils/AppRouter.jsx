@@ -6,6 +6,7 @@ import Login from '../pages/Login.jsx'
 import Signup from '../pages/Signup.jsx'
 import WebcamFaceDetection from '../pages/WebcamFaceDetection.jsx'
 import Assignment from '../pages/Assignment.jsx'
+import Batches from '../pages/Batches.jsx'
 import DashboardComponents from '../components/DashboardComponents.jsx'
 import SideBar from '../components/Sidebar.jsx'
 import { Layout } from 'antd'
@@ -36,7 +37,8 @@ const AppRouter = () => {
               <Routes>
                 <Route path='/' element={<DashboardComponents />} />
                 <Route path='/assignment' element={<Assignment />} />
-                <Route path='/Test' element={<WebcamFaceDetection/>}/>
+                <Route path='/batches' element={<Batches />} />
+                <Route path='/Test' element={<WebcamFaceDetection />} />
               </Routes>
 
             </Layout>

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Avatar, Layout, Space, Typography, theme } from 'antd';
+import { Avatar, Card, Layout, Space, Typography, theme } from 'antd';
 const { Content, Footer } = Layout;
 import "../styles/DashboardComponents.css"
+import DueAssignmentCard from './DueAssignment';
 
 const DashboardComponents = () => {
 
@@ -36,24 +37,31 @@ const DashboardComponents = () => {
                         </Typography>
                     </Space>
 
-                    <Typography.Text><h4>Lectures</h4></Typography.Text>
-                    <div
-                        style={{
-                            padding: 24,
-                            minHeight: 360,
-                            background: colorBgContainer,
-                        }}
-                    >
-                        {/* <UserTable /> */}
+                    <div className='dashboard-main-container' >
+                        <div className="due-assignment-container">
+                            <Typography.Title level={4}>Due Assignments</Typography.Title>
+                            <div className="due-assignment-card-container">
+                                <DueAssignmentCard />
+                                <DueAssignmentCard />
+                                <DueAssignmentCard />
+                                <DueAssignmentCard />
+                                <DueAssignmentCard />
+                            </div>
+                        </div>
+
+
+                        <div className="total-batches-container">
+                            <Typography.Title level={4}>Your Batches</Typography.Title>
+                            <div className="total-batches-card-container">
+                                <DueAssignmentCard />
+                                <DueAssignmentCard />
+                                <DueAssignmentCard />
+                                <DueAssignmentCard />
+                                <DueAssignmentCard />
+                            </div>
+                        </div>
                     </div>
                 </Content>
-                <Footer
-                    style={{
-                        textAlign: 'center',
-                    }}
-                >
-                    Ant Design ©2023 Created by Ant UED
-                </Footer>
             </Layout>
 
         </>

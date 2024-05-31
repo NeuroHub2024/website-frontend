@@ -21,7 +21,7 @@ const Assignment = () => {
                     }}
                 >
 
-                    <Typography.Text><h4>Assignment</h4></Typography.Text>
+                    {/* <Typography.Text><h4>Assignment</h4></Typography.Text> */}
                     <div
 
                         className='assignment-container'
