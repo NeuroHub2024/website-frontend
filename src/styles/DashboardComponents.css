@@ -11,3 +11,27 @@
   justify-content: space-between;
   width: 50%;
 }
+
+.due-assignment-card-container {
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: scroll;
+  padding: 1rem;
+}
+
+.total-batches-container {
+  margin-top: 2rem;
+}
+
+.total-batches-card-container {
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: scroll;
+  padding: 1rem;
+}

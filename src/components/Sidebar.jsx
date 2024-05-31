@@ -20,14 +20,14 @@ function getItem(label, key, icon) {
 const items = [
 
     getItem(<Link to={"/"} >Dashboard</Link>, 'sub1', <AppstoreOutlined />),
-    getItem(<Link to={"/assignment"} >Assignment</Link>, 'sub2', <UserOutlined />),
-    getItem(<Link to={"/stats"} >Stats</Link>, 'sub3', <UserOutlined />),
-    getItem(<Link to={"/socialmedia"} >Social Media</Link>, 'sub4', <UserOutlined />),
-    getItem(<Link to={"/trainer"} >Trainer</Link>, 'sub5', <UserOutlined />),
-    getItem(<Link to={"/webinar"} >Webinars</Link>, 'sub6', <UserOutlined />),
-    getItem(<Link to={"/internship"}>Internships</Link>, 'sub7', <UserOutlined />),
-    getItem(<Link to={"/workshop"} >Workshop</Link>, 'sub8', <UserOutlined />),
-    getItem(<Link to={"/campus"} >Campus</Link>, 'sub9', <UserOutlined />),
+    getItem(<Link to={"/batches"} >Batch</Link>, 'sub3', <UserOutlined />),
+    // getItem(<Link to={"/assignment"} >Assignment</Link>, 'sub2', <UserOutlined />),
+    // getItem(<Link to={"/socialmedia"} >Social Media</Link>, 'sub4', <UserOutlined />),
+    // getItem(<Link to={"/trainer"} >Trainer</Link>, 'sub5', <UserOutlined />),
+    // getItem(<Link to={"/webinar"} >Webinars</Link>, 'sub6', <UserOutlined />),
+    // getItem(<Link to={"/internship"}>Internships</Link>, 'sub7', <UserOutlined />),
+    // getItem(<Link to={"/workshop"} >Workshop</Link>, 'sub8', <UserOutlined />),
+    // getItem(<Link to={"/campus"} >Campus</Link>, 'sub9', <UserOutlined />),
 
 ];
 
@@ -39,7 +39,7 @@ const SideBar = () => {
     return (
         <>
 
-            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}
+            <Sider collapsible collapsed={collapsed} theme='dark' onCollapse={(value) => setCollapsed(value)}
                 style={{
                     padding: 0,
                     background: colorBgContainer,

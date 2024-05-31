@@ -1,75 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Hanuman:wght@100;300;400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Hanuman:wght@100;300;400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-    --color-bg-primary: #FFFFFF;
-    --color-bg-secondary: #E0D1FF;
-    --color-bg-highlight: #774ED1;
-    --color-bg-shadow: lightgray;
-    --color-btn-shadow: #e0d1ffb3;
-    --color-btn-secondary: #E0D1FF;
-    --color-btn-primary-hover: #774ED1;
-    --color-btn-secondary-hover: #d2bdfd;
-    font-size: 16px;
-    font-family: "Poppins", sans-serif;
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #e0d1ff;
+  --color-bg-highlight: #774ed1;
+  --color-bg-shadow: lightgray;
+  --color-btn-shadow: #e0d1ffb3;
+  --color-btn-secondary: #e0d1ff;
+  --color-btn-primary-hover: #774ed1;
+  --color-btn-secondary-hover: #d2bdfd;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* background-color: var(--color-bg-primary); */
 }
 
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
 
 body[data-theme="dark"] {
-    --color-bg-primary: #262528;
-    --color-bg-secondary: #1C1B20;
-    color: white;
-    background-color: var(--color-bg-primary);
+  --color-bg-primary: #262528;
+  --color-bg-secondary: #1c1b20;
+  color: white;
+  background-color: var(--color-bg-primary);
 }
 
 body[data-theme="light"] {
-    --color-bg-primary: #FFFFFF;
-    --color-bg-secondary: #E0D1FF;
-    color: black;
-    background-color: var(--color-bg-primary);
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #e0d1ff;
+  color: black;
+  background-color: var(--color-bg-primary);
 }
 
 /* Utility Classes */
-.text-highlight{
-    color: var(--color-bg-highlight);
+.text-highlight {
+  color: var(--color-bg-highlight);
 }
 
 .btn-secondary {
-    color: var(--color-bg-highlight);
-    background-color: var(--color-btn-secondary);
-    border: none;
-    outline: none;
-    border-radius: 1.5rem;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: 0.2s ease;
+  color: var(--color-bg-highlight);
+  background-color: var(--color-btn-secondary);
+  border: none;
+  outline: none;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.btn-secondary:hover{
-    background-color: var(--color-btn-secondary-hover);
+.btn-secondary:hover {
+  background-color: var(--color-btn-secondary-hover);
 }
 
 .btn-primary {
-    color: white;
-    background-color: var(--color-bg-highlight);
-    border: none;
-    outline: none;
-    border-radius: 1.5rem;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: 0.2s ease;
+  color: white;
+  background-color: var(--color-bg-highlight);
+  border: none;
+  outline: none;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.btn-primary:hover{
-    background-color: var(--color-btn-primary-hover);
+.btn-primary:hover {
+  background-color: var(--color-btn-primary-hover);
+}
+
+:where(.css-dev-only-do-not-override-kghr11).ant-layout {
+  background-color: var(--color-bg-primary);
 }
