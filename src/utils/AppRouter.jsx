@@ -10,40 +10,86 @@ import Batches from '../pages/Batches.jsx'
 import DashboardComponents from '../components/DashboardComponents.jsx'
 import SideBar from '../components/Sidebar.jsx'
 import { Layout } from 'antd'
+import { ConfigProvider } from 'antd';
+import { useEffect, useState } from 'react'
+
+export const lightTheme = {
+  token: {
+    colorPrimary: '#e0d1ff',
+    borderRadius: 4,
+    colorBgBase: 'white',
+    colorTextBase: 'black'
+    // Add other light theme tokens
+  },
+};
+
+export const darkTheme = {
+  token: {
+    colorPrimary: '#262528',
+    borderRadius: 4,
+    colorBgBase: 'black',
+    colorTextBase: 'white'
+    // Add other dark theme tokens
+  },
+};
+
+
+
 
 const auth = false;
 
 
 const AppRouter = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+
+  useEffect(() => {
+    const th = localStorage.getItem('display-theme')
+    if (th === 'dark') {
+      setIsDarkMode(true)
+    }
+    else {
+      setIsDarkMode(false)
+    }
+  }, [])
+
   return (
     <>
-      <Navbar />
-      <BrowserRouter>
-        {auth ?
-          <>
-            <Routes>
+      <ConfigProvider theme={isDarkMode ? darkTheme : lightTheme}>
 
-              <Route path='/' element={<Home />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/Signup' element={<Signup />} />
-              <Route path='/assignment' element={<Assignment />} />
-            </Routes>
-
-          </>
-          :
-          <>
-            <Layout style={{ minHeight: '100vh' }} >
-              <SideBar />
+        <Navbar func={toggleTheme} />
+        <BrowserRouter>
+          {auth ?
+            <>
               <Routes>
-                <Route path='/' element={<DashboardComponents />} />
+
+                <Route path='/' element={<Home />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/Signup' element={<Signup />} />
                 <Route path='/assignment' element={<Assignment />} />
-                <Route path='/batches' element={<Batches />} />
-                <Route path='/Test' element={<WebcamFaceDetection />} />
               </Routes>
 
-            </Layout>
-          </>}
-      </BrowserRouter>
+            </>
+            :
+            <>
+              <Layout style={{ minHeight: '100vh' }} >
+                <SideBar />
+                <Routes>
+                  <Route path='/' element={<DashboardComponents />} />
+                  <Route path='/assignment' element={<Assignment />} />
+                  <Route path='/batches' element={<Batches />} />
+                  <Route path='/Test' element={<WebcamFaceDetection />} />
+                </Routes>
+
+              </Layout>
+            </>}
+        </BrowserRouter>
+      </ConfigProvider>
+
     </>
   )
 }

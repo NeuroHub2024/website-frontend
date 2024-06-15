@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { ThemeProvider } from './contexts/ThemeContext'
 import AppRouter from './utils/AppRouter'
 

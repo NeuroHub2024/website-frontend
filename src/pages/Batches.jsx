@@ -62,7 +62,7 @@ const Batches = () => {
                         </div>
 
                         <div className="batch-content-seletor-container">
-                            <div className={materialClass} onClick={() => handleSetComponent("Material")}><span> Material</span> </div>
+                            <div className={materialClass} onClick={() => handleSetComponent("Material")}><span> Lectures</span> </div>
                             <div className={announcementClass} onClick={() => handleSetComponent("Announcement")}><span>Announcement</span></div>
                             <div className={assignmentClass} onClick={() => handleSetComponent("Assignment")}><span>Assignment</span></div>
                         </div>

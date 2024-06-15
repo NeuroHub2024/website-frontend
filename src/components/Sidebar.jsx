@@ -39,7 +39,7 @@ const SideBar = () => {
     return (
         <>
 
-            <Sider collapsible collapsed={collapsed} theme='dark' onCollapse={(value) => setCollapsed(value)}
+            <Sider collapsible collapsed={collapsed} theme='light' onCollapse={(value) => setCollapsed(value)}
                 style={{
                     padding: 0,
                     background: colorBgContainer,

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import "../styles/UploadAssignmentComponent.css";
-import { UploadOutlined } from '@ant-design/icons';
 import pdfToText from 'react-pdftotext'
 
 const UploadAssignmentComponent = () => {
