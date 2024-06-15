@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import cap from "../assets/cap.png";
 import studyboy from "../assets/studyboy.png";
 import "../styles/LandingPage.css";
@@ -20,7 +21,7 @@ function LandingPage() {
         <div className="bigtext2">Meets Technology</div>
         <div className="smalltext">Welcome back and get ready to study!!</div>
         <div className="buttons">
-          <button className="button1">Join now</button>
+          <button className="button1"><Link to={'/Signup'} > Join now</Link></button>
           <button className="button2">Know more</button>
         </div>
       </div>

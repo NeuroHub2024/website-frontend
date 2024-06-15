@@ -78,3 +78,11 @@ body[data-theme="light"] {
 :where(.css-dev-only-do-not-override-kghr11).ant-layout {
   background-color: var(--color-bg-primary);
 }
+
+/* Scroll Bar */
+
+/* Custom scrollbar for Firefox */
+* {
+  scrollbar-width: thin; /* Width of the scrollbar */
+  scrollbar-color: #888 var(--color-bg-primary); /* Color of the scrollbar thumb and track */
+}
