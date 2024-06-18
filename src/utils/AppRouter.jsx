@@ -12,6 +12,7 @@ import SideBar from '../components/Sidebar.jsx'
 import { Layout } from 'antd'
 import { ConfigProvider } from 'antd';
 import { useEffect, useState } from 'react'
+import Lecture from '../pages/Lecture.jsx'
 
 export const lightTheme = {
   token: {
@@ -82,6 +83,7 @@ const AppRouter = () => {
                   <Route path='/' element={<DashboardComponents />} />
                   <Route path='/assignment' element={<Assignment />} />
                   <Route path='/batches' element={<Batches />} />
+                  <Route path='/lecture/:lectureId' element={<Lecture />} />
                   <Route path='/Test' element={<WebcamFaceDetection />} />
                 </Routes>
 

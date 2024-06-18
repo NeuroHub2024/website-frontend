@@ -3,30 +3,34 @@ import '../styles/Batches.css'
 import { Layout } from 'antd'
 import { Content } from 'antd/es/layout/layout'
 import Assignment from './Assignment'
+import LectureContainer from '../containers/LectureContainer'
+// import AssignmentCard from '../components/AssignmentCard'
+import AssingmentContainer from '../containers/AssingmentContainer'
+import AnnouncementContainer from '../containers/AnnouncementContainer'
 
 
 
 
 const Batches = () => {
-    const [component, setComponent] = useState(<div>Material</div>)
+    const [component, setComponent] = useState(<div><LectureContainer /></div>)
     const [materialClass, setMaterialClass] = useState('batche-content-seleted');
     const [announcementClass, setAnnouncementClass] = useState('');
     const [assignmentClass, setAssignmentClass] = useState('');
     const handleSetComponent = (e) => {
         if (e === 'Material') {
-            setComponent(<div>Material</div>)
+            setComponent(<LectureContainer />)
             setMaterialClass('batche-content-seleted')
             setAnnouncementClass('')
             setAssignmentClass('')
         }
         else if (e === 'Announcement') {
-            setComponent(<div>Announcement</div>)
+            setComponent(<AnnouncementContainer />)
             setMaterialClass('')
             setAnnouncementClass('batche-content-seleted')
             setAssignmentClass('')
         }
         else if (e === 'Assignment') {
-            setComponent(<Assignment />)
+            setComponent(<AssingmentContainer />)
             setMaterialClass('')
             setAnnouncementClass('')
             setAssignmentClass('batche-content-seleted')
