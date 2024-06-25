@@ -3,7 +3,7 @@ import styles from "../styles/AssignmentCard.module.css";
 
 const AssignmentCard = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.headingContainer}>
       <div className={styles.left}>
         <div className={styles.icon}>
           <i className="fa-solid fa-file-lines fa-xl"></i>

@@ -1,13 +1,13 @@
 // import { Link } from "react-router-dom";
 import React from 'react'
-import styles from "../styles/AssignmentCard.module.css";
+import styles from "../styles/AnnouncementCard.module.css";
 
 const AssignmentCard = () => {
   return (
     <div className={styles.container}>
       <div className={styles.left}>
         <div className={styles.icon}>
-            <i className="fa-solid fa-bullhorn fa-xl"></i>
+            <i className="fa-solid fa-bullhorn fa-lg"></i>
         </div>
         <div>
         <div className={styles.title}>
