@@ -16,7 +16,7 @@ import Lecture from '../pages/Lecture.jsx'
 
 export const lightTheme = {
   token: {
-    colorPrimary: '#e0d1ff',
+    colorPrimary: '#ff3453',
     borderRadius: 4,
     colorBgBase: 'white',
     colorTextBase: 'black'
