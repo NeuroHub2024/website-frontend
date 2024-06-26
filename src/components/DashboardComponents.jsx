@@ -67,7 +67,7 @@ const DashboardComponents = () => {
 
                     <div className="calnder-container">
                         <div className='calender'>
-                            <Calendar className='calender' fullscreen={false} onPanelChange={onPanelChange} />
+                            <Calendar fullscreen={false} onPanelChange={onPanelChange} />
                         </div>
                         <div className="live-class-container">
                             <Empty
