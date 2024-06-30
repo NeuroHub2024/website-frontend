@@ -3,6 +3,8 @@ import login_img from '../assets/login_img.png';
 import { Link,useNavigate } from 'react-router-dom';
 import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Select } from 'antd';
+import nprogress from 'nprogress';
+import 'nprogress/nprogress.css';
 import axios from 'axios';
 
 const { Option } = Select;
@@ -19,12 +21,16 @@ function Signup() {
     };
     console.log('Payload to be sent: ', payload);
     try {
+      nprogress.start();
       const response = await axios.post('https://gateway-mpfy.onrender.com/user/adduser', payload);
       console.log('Signup successful: ', response.data);
       navigate('/login');
     } catch (error) {
       console.error('There was an error signing up: ', error.response ? error.response.data : error.message);
       
+    }
+    finally {
+      nprogress.done();
     }
   };
 
