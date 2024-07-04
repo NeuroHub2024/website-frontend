@@ -1,15 +1,37 @@
-// import '../styles/Signup.css'
-import login_img from '../assets/login_img.png'
-import { Link } from 'react-router-dom';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
 
+import login_img from '../assets/login_img.png';
+import { Link,useNavigate } from 'react-router-dom';
+import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
+import { Button, Checkbox, Form, Input, Select } from 'antd';
+import nprogress from 'nprogress';
+import 'nprogress/nprogress.css';
+import axios from 'axios';
 
+const { Option } = Select;
 
 function Signup() {
-
-  const onFinish = (values) => {
+  const navigate = useNavigate();
+  const onFinish = async (values) => {
     console.log('Received values of form: ', values);
+    const payload = {
+      username: values.username,
+      email: values.email,
+      password: values.password,
+      role: values.role,
+    };
+    console.log('Payload to be sent: ', payload);
+    try {
+      nprogress.start();
+      const response = await axios.post('https://gateway-mpfy.onrender.com/user/adduser', payload);
+      console.log('Signup successful: ', response.data);
+      navigate('/login');
+    } catch (error) {
+      console.error('There was an error signing up: ', error.response ? error.response.data : error.message);
+      
+    }
+    finally {
+      nprogress.done();
+    }
   };
 
   return (
@@ -29,17 +51,6 @@ function Signup() {
             onFinish={onFinish}
           >
             <Form.Item
-              name="name"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your Name!',
-                },
-              ]}
-            >
-              <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Name" />
-            </Form.Item>
-            <Form.Item
               name="username"
               rules={[
                 {
@@ -49,6 +60,18 @@ function Signup() {
               ]}
             >
               <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+            </Form.Item>
+            <Form.Item
+              name="email"
+              rules={[
+                {
+                  required: true,
+                  type: 'email',
+                  message: 'Please input a valid Email!',
+                },
+              ]}
+            >
+              <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
             </Form.Item>
             <Form.Item
               name="password"
@@ -65,6 +88,20 @@ function Signup() {
                 placeholder="Password"
               />
             </Form.Item>
+            <Form.Item
+              name="role"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please select your Role!',
+                },
+              ]}
+            >
+              <Select placeholder="Select a role">
+                <Option value="Admin">Admin</Option>
+                <Option value="User">User</Option>
+              </Select>
+            </Form.Item>
             <Form.Item>
               <Form.Item name="remember" valuePropName="checked" noStyle>
                 <Checkbox>Remember me</Checkbox>
@@ -76,6 +113,7 @@ function Signup() {
             </Form.Item>
 
             <Form.Item>
+          
               <Button type="primary" htmlType="submit" className="login-form-button">
                 Sign Up
               </Button>
@@ -84,7 +122,7 @@ function Signup() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Signup
+export default Signup;
