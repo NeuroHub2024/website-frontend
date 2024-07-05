@@ -4,6 +4,8 @@ import { Typography } from 'antd'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import nprogress from 'nprogress';
+import 'nprogress/nprogress.css';
 import {
     Button,
     Form,
@@ -48,15 +50,26 @@ const AddBatchesComponent = () => {
             language,
             token
         }
-        setLoading(true);
+        // setLoading(true);
         try {
-            const res = await axios.post('https://gateway-mpfy.onrender.com/batch/', batch);
+            nprogress.start(); // Start the loader
+            const res = await axios.post('https://gateway-mpfy.onrender.com/batch/', batch, {
+                withCredentials: true,
+                headers: {
+                    'Cookie': `token=${token}`
+                }
+            });
             console.log(res.data);
+            
         }
         catch (err) {
             console.log(err);
         }
-        setLoading(false);
+        finally{
+            nprogress.done();
+        }
+        navigate('/batches')
+        // setLoading(false);
 
         // navigate('/batch');
     };
@@ -97,7 +110,7 @@ const AddBatchesComponent = () => {
                     <Typography.Title level={2}>Enter the Batch Details</Typography.Title>
                 </div>
                 <div className="add-batch-detail-form-container">
-                    <Spin className='loader-container' spinning={loading} >
+                    {/* <Spin className='loader-container' spinning={loading} > */}
                         <Form
                             {...formItemLayout}
                             variant="filled"
@@ -145,7 +158,7 @@ const AddBatchesComponent = () => {
                                 </Button>
                             </Form.Item>
                         </Form>
-                    </Spin>
+                    {/* </Spin> */}
                 </div>
             </div>
 
