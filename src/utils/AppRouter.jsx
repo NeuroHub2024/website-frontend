@@ -103,17 +103,23 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Home from '../pages/Home';
 import Navbar from '../components/Navbar.jsx';
+import AddBatchesComponent from "../components/AddBatchesComponent"
 import Login from '../pages/Login.jsx';
 import Signup from '../pages/Signup.jsx';
 import WebcamFaceDetection from '../pages/WebcamFaceDetection.jsx';
 import Assignment from '../pages/Assignment.jsx';
+import Batch from '../pages/Batch.jsx';
 import Batches from '../pages/Batches.jsx';
+import AddLectureComponent from "../components/AddLectureComponent.jsx"
+import AddAssignmentComponent from "../components/AddAssignmentComponent.jsx"
+import AddAnnouncementComponent from "../components/AddAnnouncementComponent.jsx"
 import DashboardComponents from '../components/DashboardComponents.jsx';
 import SideBar from '../components/Sidebar.jsx';
 import { Layout } from 'antd';
 import { ConfigProvider } from 'antd';
 import { useEffect, useState } from 'react';
 import Lecture from '../pages/Lecture.jsx';
+import Cookies from 'js-cookie';
 
 export const lightTheme = {
   token: {
@@ -138,8 +144,8 @@ export const darkTheme = {
 const AppRouter = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [auth, setAuth] = useState(() => {
-    const savedAuth = localStorage.getItem('auth');
-    return savedAuth === 'true';
+    const token = Cookies.get('token');
+    return token ? true : false;
   });
 
   const toggleTheme = () => {
@@ -155,19 +161,19 @@ const AppRouter = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (auth) {
-      const timer = setTimeout(() => {
-        setAuth(false);
-        localStorage.setItem('auth', 'false');
-      }, 10 * 60 * 1000); // 10 minutes in milliseconds
-      return () => clearTimeout(timer);
-    }
-  }, [auth]);
+  // useEffect(() => {
+  //   if (auth) {
+  //     const timer = setTimeout(() => {
+  //       setAuth(false);
+  //       localStorage.setItem('auth', 'false');
+  //     }, 10 * 60 * 1000); // 10 minutes in milliseconds
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [auth]);
 
   const handleLoginSuccess = () => {
     setAuth(true);
-    localStorage.setItem('auth', 'true');
+    // localStorage.setItem('auth', 'true');
   };
 
   return (
@@ -182,9 +188,14 @@ const AppRouter = () => {
                 <Routes>
                   <Route path='/' element={<DashboardComponents />} />
                   <Route path='/assignment' element={<Assignment />} />
+                  <Route path='/batch' element={<Batch />} />
                   <Route path='/batches' element={<Batches />} />
                   <Route path='/lecture/:lectureId' element={<Lecture />} />
                   <Route path='/Test' element={<WebcamFaceDetection />} />
+                  <Route path='/add-batch' element={<AddBatchesComponent />} />
+                  <Route path='/add-assignment' element={<AddAssignmentComponent />} />
+                  <Route path='/add-lecture' element={<AddLectureComponent />} />
+                  <Route path='/add-announcement' element={<AddAnnouncementComponent />} />
                 </Routes>
               </Layout>
             </>

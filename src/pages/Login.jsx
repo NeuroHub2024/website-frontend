@@ -5,8 +5,8 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
-import login_img from '../assets/login_img.png';
 import '../styles/Login.css';
+import Cookies from 'js-cookie';
 import nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
 
@@ -24,12 +24,36 @@ function Login({ onLoginSuccess }) {
       nprogress.start(); // Start the loader
       const response = await axios.post('https://gateway-mpfy.onrender.com/user/login', payload);
       console.log('Login successful: ', response.data);
-      onLoginSuccess();
-      navigate('/');
+
+      if (response.status === 200) {
+        debugger
+        const token = response.data.data.token; // Extract the token from response data
+        console.log('Token received: ', token);
+
+        // Set the token in the cookies
+        Cookies.set('token', token, { expires: 7 }); // Set token with an expiry of 7 days
+
+        try {
+          const authResponse = await axios.post(
+            'https://gateway-mpfy.onrender.com/user/authenticate',
+            { 'token': token }, // No need to send anything in the body
+            { withCredentials: true }
+          );
+          console.log('Authentication successful: ', authResponse.data);
+          if (authResponse.status === 200) {
+            onLoginSuccess();
+            navigate('/');
+          } else {
+            console.error('Authentication failed');
+          }
+        } catch (authError) {
+          console.error('There was an error during authentication: ', authError.response ? authError.response.data : authError.message);
+        }
+      }
     } catch (error) {
-      console.error('There was an error signing up: ', error.response ? error.response.data : error.message);
+      console.error('There was an error logging in: ', error.response ? error.response.data : error.message);
     } finally {
-      nprogress.done(); // Stop the loader
+      nprogress.done();
     }
   };
 
@@ -37,7 +61,6 @@ function Login({ onLoginSuccess }) {
     <div className="fullpage">
       <div className="box">
         <div className="imagebox">
-          <img className="image" src={login_img} alt="Example" />
         </div>
         <hr style={{ color: 'grey' }} />
         <div className="form">
@@ -85,4 +108,5 @@ function Login({ onLoginSuccess }) {
 }
 
 export default Login;
+
 

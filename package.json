@@ -17,6 +17,8 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "antd": "^5.16.5",
     "axios": "^1.7.2",
+    "cookies": "^0.9.1",
+    "js-cookie": "^3.0.5",
     "nprogress": "^0.2.0",
     "pdfjs": "^2.5.3",
     "pdfjs-dist": "^4.2.67",

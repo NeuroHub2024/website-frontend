@@ -1,10 +1,11 @@
-nav{
-    width: 100%;
-    height: fit-content;
-    max-height: 10%;
-    background-color: var(--color-bg-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
+nav {
+  width: 100%;
+  height: fit-content;
+  max-height: 10%;
+  background-color: var(--color-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgb(236, 229, 229);
 }
