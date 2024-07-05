@@ -36,11 +36,10 @@ body[data-theme="dark"] {
 }
 
 body[data-theme="light"] {
-  --color-bg-primary: #e4e4e4;
-  /* --color-bg-primary: #ffffff; */
+  /* --color-bg-primary: #e4e4e4; */
+  --color-bg-primary: #ffffff;
   /* --color-bg-secondary: rgba(8, 8, 8, 0.5); */
   --color-bg-secondary: white;
-  /* --color-bg-secondary: #BB99FF; */
   color: black;
   --color-shadow: rgba(226, 226, 226, 0.753);
   background-color: var(--color-bg-primary);

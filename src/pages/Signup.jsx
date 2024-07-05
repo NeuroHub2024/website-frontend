@@ -1,6 +1,5 @@
 
-import login_img from '../assets/login_img.png';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Select } from 'antd';
 import nprogress from 'nprogress';
@@ -27,7 +26,7 @@ function Signup() {
       navigate('/login');
     } catch (error) {
       console.error('There was an error signing up: ', error.response ? error.response.data : error.message);
-      
+
     }
     finally {
       nprogress.done();
@@ -38,7 +37,6 @@ function Signup() {
     <div className="fullpage">
       <div className="box">
         <div className="imagebox">
-          {/* <img className="image" src={login_img} alt="Example" /> */}
         </div>
         <hr style={{ color: 'grey' }}></hr>
         <div className="form">
@@ -113,7 +111,7 @@ function Signup() {
             </Form.Item>
 
             <Form.Item>
-          
+
               <Button type="primary" htmlType="submit" className="login-form-button">
                 Sign Up
               </Button>

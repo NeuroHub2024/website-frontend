@@ -58,8 +58,6 @@
 }
 
 .button {
-  color: var(--color-btn-secondary);
-  background-color: var(--color-bg-highlight);
   border: none;
   outline: none;
   border-radius: 1.5rem;
@@ -71,9 +69,9 @@
   margin-top: 10%;
   width: 100px;
 }
-.button:hover {
+/* .button:hover {
   background-color: var(--color-btn-secondary-hover);
-}
+} */
 .sign {
   font-size: 1rem;
   margin-top: 5px;
@@ -84,9 +82,9 @@
 }
 
 .login-form-button {
+  background-color: #ff3453;
   box-shadow: none;
   border-color: var(--color-bg-highlight);
-  color: var(--color-bg-highlight);
 }
 
 @media (max-width: 700px) {
@@ -125,4 +123,3 @@
   border-top-color: red !important;
   border-left-color: red !important;
 }
-

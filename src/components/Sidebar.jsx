@@ -20,7 +20,8 @@ function getItem(label, key, icon) {
 const items = [
 
     getItem(<Link to={"/"} >Dashboard</Link>, 'sub1', <AppstoreOutlined />),
-    getItem(<Link to={"/batches"} >Batch</Link>, 'sub3', <UserOutlined />),
+    getItem(<Link to={"/batch"} >Batch</Link>, 'sub2', <UserOutlined />),
+    getItem(<Link to={"/batches"} >Batches</Link>, 'sub3', <UserOutlined />),
     // getItem(<Link to={"/assignment"} >Assignment</Link>, 'sub2', <UserOutlined />),
     // getItem(<Link to={"/socialmedia"} >Social Media</Link>, 'sub4', <UserOutlined />),
     // getItem(<Link to={"/trainer"} >Trainer</Link>, 'sub5', <UserOutlined />),
