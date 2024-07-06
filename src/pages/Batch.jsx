@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import '../styles/Batches.css'
 import { Layout } from 'antd'
 import { Content } from 'antd/es/layout/layout'
-import Assignment from './Assignment'
 import LectureContainer from '../containers/LectureContainer'
 import AssingmentContainer from '../containers/AssingmentContainer'
 import AnnouncementContainer from '../containers/AnnouncementContainer'
+import { useParams } from 'react-router-dom'
+import Cookie from 'js-cookie'
 
 
 
@@ -35,6 +37,30 @@ const Batches = () => {
             setAssignmentClass('batche-content-seleted')
         }
     }
+
+    const params = useParams();
+
+    const getBatchId = async () => {
+        try {
+            const token = Cookie.get('token');
+
+
+            const response = await axios.get(`https://gateway-mpfy.onrender.com/batch/${params.id}`, {
+                withCredentials: true,
+                headers: {
+                    'Cookies': `token:${token}`
+                }
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getBatchId();
+    }, [])
+
 
 
     return (
