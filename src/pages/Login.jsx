@@ -26,7 +26,6 @@ function Login({ onLoginSuccess }) {
       console.log('Login successful: ', response.data);
 
       if (response.status === 200) {
-        debugger
         const token = response.data.data.token; // Extract the token from response data
         console.log('Token received: ', token);
 
