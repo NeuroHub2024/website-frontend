@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Typography } from 'antd'
+import { DatePicker, Typography } from 'antd'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import Cookie from 'js-cookie';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
     Button,
     Form,
@@ -30,23 +31,61 @@ const formItemLayout = {
 
 const AddAssignmentComponent = () => {
     const navigate = useNavigate();
+    const params = useParams();
 
     const [title, setTitle] = useState("");
-    const [url, setUrl] = useState();
-    const [loading, setLoading] = React.useState(false);
+    const [date, setDate] = useState();
+    const [body, setBody] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleOnClick = async (e) => {
         e.preventDefault();
 
-        const batch = {
-            title,
-            url
-        }
         setLoading(true);
         try {
-            // const res = await axios.post('https://gateway-mpfy.onrender.com/batch/', batch);
-            // console.log(res.data);
-            alert("Lecture Added Successfully " + title + " " + url);
+            const token = Cookie.get('token');
+            const authResponse = await axios.post(
+                'https://gateway-mpfy.onrender.com/user/authenticate',
+                { 'token': token }, // No need to send anything in the body
+                { withCredentials: true }
+            );
+            const userId = authResponse.data._id;
+            const paresedDate = new Date(date);
+
+            const assignment = {
+                title: title,
+                createdBy: userId,
+                due: paresedDate,
+                body: body,
+            }
+
+            const response = await axios.post(
+                `https://gateway-mpfy.onrender.com/assignment/createassignment/${params.batchId}`,
+                assignment,
+                {
+                    withCredentials: true, headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+            );
+
+            console.log("Batch Created : ", response.data);
+
+            const assignmentId = response.data._id;
+
+            const res = await axios.post(
+                `https://gateway-mpfy.onrender.com/batch/${params.batchId}/assignment/${assignmentId}`,
+                assignment,
+                {
+                    withCredentials: true, headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+            );
+
+            console.log(res.data);
+
+            navigate(`/batch/${params.batchId}`)
         }
         catch (err) {
             console.log(err);
@@ -72,7 +111,7 @@ const AddAssignmentComponent = () => {
                         >
                             <Form.Item
                                 label="Title"
-                                title="title"
+                                title="Title"
                                 rules={[
                                     {
                                         required: true,
@@ -82,19 +121,28 @@ const AddAssignmentComponent = () => {
                             >
                                 <Input value={title} onChange={(e) => setTitle(e.target.value)} />
                             </Form.Item>
+
+
                             <Form.Item
-                                label="URl Link"
-                                title="url"
+                                label="Due Date"
+                                name="date"
+
+                            >
+                                <DatePicker value={date} onChange={(date, dateString) => setDate(dateString)} />
+                            </Form.Item>
+
+                            <Form.Item
+                                label="TextArea"
+                                name="TextArea"
                                 rules={[
                                     {
-                                        required: true,
                                         message: 'Please input!',
                                     },
                                 ]}
                             >
-                                <Input value={url} onChange={(e) => setUrl(e.target.value)} />
+                                <Input.TextArea
+                                    value={body} onChange={(e) => setBody(e.target.value)} />
                             </Form.Item>
-
 
                             <Form.Item
                                 wrapperCol={{

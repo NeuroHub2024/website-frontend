@@ -24,7 +24,12 @@ const Batches = () => {
         setLoading(true);
         try {
             const token = Cookies.get("token");
-            const { data } = await axios.post("https://gateway-mpfy.onrender.com/batch/getbatches", { "token": token });
+            const { data } = await axios.post("https://gateway-mpfy.onrender.com/batch/getbatches", {}, {
+                withCredentials: true,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            });
             setBatches(data);
             console.log(data);
         }
