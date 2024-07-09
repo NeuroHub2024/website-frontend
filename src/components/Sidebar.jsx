@@ -22,14 +22,7 @@ const items = [
     getItem(<Link to={"/"} >Dashboard</Link>, 'sub1', <AppstoreOutlined />),
     getItem(<Link to={"/batch"} >Batch</Link>, 'sub2', <UserOutlined />),
     getItem(<Link to={"/batches"} >Batches</Link>, 'sub3', <UserOutlined />),
-    // getItem(<Link to={"/assignment"} >Assignment</Link>, 'sub2', <UserOutlined />),
-    // getItem(<Link to={"/socialmedia"} >Social Media</Link>, 'sub4', <UserOutlined />),
-    // getItem(<Link to={"/trainer"} >Trainer</Link>, 'sub5', <UserOutlined />),
-    // getItem(<Link to={"/webinar"} >Webinars</Link>, 'sub6', <UserOutlined />),
-    // getItem(<Link to={"/internship"}>Internships</Link>, 'sub7', <UserOutlined />),
-    // getItem(<Link to={"/workshop"} >Workshop</Link>, 'sub8', <UserOutlined />),
-    // getItem(<Link to={"/campus"} >Campus</Link>, 'sub9', <UserOutlined />),
-
+    getItem(<Link to={"/logout"} >Logout</Link>, 'sub4', <UserOutlined />),
 ];
 
 const SideBar = () => {

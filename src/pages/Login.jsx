@@ -25,6 +25,7 @@ function Login({ onLoginSuccess }) {
       const response = await axios.post('https://gateway-mpfy.onrender.com/user/login', payload);
       console.log('Login successful: ', response.data);
 
+
       if (response.status === 200) {
         const token = response.data.data.token; // Extract the token from response data
         console.log('Token received: ', token);

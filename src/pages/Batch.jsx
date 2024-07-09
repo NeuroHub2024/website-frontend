@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import '../styles/Batches.css'
-import { Layout } from 'antd'
+import { Layout, Spin } from 'antd'
 import { Content } from 'antd/es/layout/layout'
 import LectureContainer from '../containers/LectureContainer'
 import AssingmentContainer from '../containers/AssingmentContainer'
@@ -17,21 +17,24 @@ const Batches = () => {
     const [materialClass, setMaterialClass] = useState('batche-content-seleted');
     const [announcementClass, setAnnouncementClass] = useState('');
     const [assignmentClass, setAssignmentClass] = useState('');
-    const handleSetComponent = (e) => {
+
+    const [batch, setBatch] = useState();
+
+    const handleSetComponent = (e, batchId, assignments, lectures, announcements) => {
         if (e === 'Material') {
-            setComponent(<LectureContainer />)
+            setComponent(<LectureContainer batchId={batchId} lectures={lectures} />)
             setMaterialClass('batche-content-seleted')
             setAnnouncementClass('')
             setAssignmentClass('')
         }
         else if (e === 'Announcement') {
-            setComponent(<AnnouncementContainer />)
+            setComponent(<AnnouncementContainer batchId={batchId} announcements={announcements} />)
             setMaterialClass('')
             setAnnouncementClass('batche-content-seleted')
             setAssignmentClass('')
         }
         else if (e === 'Assignment') {
-            setComponent(<AssingmentContainer />)
+            setComponent(<AssingmentContainer batchId={batchId} assignments={assignments} />)
             setMaterialClass('')
             setAnnouncementClass('')
             setAssignmentClass('batche-content-seleted')
@@ -48,9 +51,10 @@ const Batches = () => {
             const response = await axios.get(`https://gateway-mpfy.onrender.com/batch/${params.id}`, {
                 withCredentials: true,
                 headers: {
-                    'Cookies': `token:${token}`
+                    'Authorization': `Bearer ${token}`,
                 }
             });
+            setBatch(response.data);
             console.log(response.data);
         } catch (error) {
             console.log(error);
@@ -69,13 +73,13 @@ const Batches = () => {
                 <Content
                 >
 
-                    <div className="batch-content-conatiner">
+                    {batch ? <div className="batch-content-conatiner">
                         <div className="batch-main-container">
                             <div className="batch-heading-container">
                                 <div className="batch-heading">
-                                    <h2>Data Structure and Algorithms</h2>
+                                    <h2>{batch.name}</h2>
                                     <p>Ashutosh Jha and 1 other</p>
-                                    <p>42 students enrolled</p>
+                                    <p>{batch.students.length} students enrolled</p>
                                 </div>
                                 <div className="batch-detail-container">
                                     <div className="batch-pending-assignment-continer  batch-assignmet-container">
@@ -84,23 +88,25 @@ const Batches = () => {
                                     </div>
                                     <div className="batch-total-assignment-continer batch-assignmet-container">
                                         <h2>Total Assignments</h2>
-                                        <h3>12</h3>
+                                        <h3>{batch.assignments.length}</h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div className="batch-content-seletor-container">
-                            <div className={materialClass} onClick={() => handleSetComponent("Material")}><span> Lectures</span> </div>
-                            <div className={announcementClass} onClick={() => handleSetComponent("Announcement")}><span>Announcement</span></div>
-                            <div className={assignmentClass} onClick={() => handleSetComponent("Assignment")}><span>Assignment</span></div>
+                            <div className={materialClass} onClick={() => handleSetComponent("Material", batch._id, batch.assignments, batch.lectures, [])}><span> Lectures</span> </div>
+                            <div className={announcementClass} onClick={() => handleSetComponent("Announcement", batch._id, batch.assignments, batch.lectures, [])}><span>Announcement</span></div>
+                            <div className={assignmentClass} onClick={() => handleSetComponent("Assignment", batch._id, batch.assignments, batch.lectures, [])}><span>Assignment</span></div>
                         </div>
 
                         <div className="batch-button-selected-content">
                             {component}
                         </div>
-                    </div>
+                    </div> :
+                        <Spin size='large' className='spin' ></Spin>}
                 </Content>
+
             </Layout>
 
         </>

@@ -18,6 +18,7 @@ import { ConfigProvider } from 'antd';
 import { useEffect, useState } from 'react';
 import Lecture from '../pages/Lecture.jsx';
 import Cookies from 'js-cookie';
+import Logout from '../pages/Logout.jsx';
 
 export const lightTheme = {
   token: {
@@ -91,9 +92,10 @@ const AppRouter = () => {
                   <Route path='/lecture/:lectureId' element={<Lecture />} />
                   <Route path='/Test' element={<WebcamFaceDetection />} />
                   <Route path='/add-batch' element={<AddBatchesComponent />} />
-                  <Route path='/add-assignment' element={<AddAssignmentComponent />} />
+                  <Route path='/add-assignment/:batchId' element={<AddAssignmentComponent />} />
                   <Route path='/add-lecture' element={<AddLectureComponent />} />
                   <Route path='/add-announcement' element={<AddAnnouncementComponent />} />
+                  <Route path='/logout' element={<Logout />} />
                 </Routes>
               </Layout>
             </>
