@@ -31,7 +31,7 @@ function Login({ onLoginSuccess }) {
         console.log('Token received: ', token);
 
         // Set the token in the cookies
-        Cookies.set('token', token, { expires: 7 }); // Set token with an expiry of 7 days
+        Cookies.set('token', token, { expires: 1 }); // Set token with an expiry of 7 days
 
         try {
           const authResponse = await axios.post(

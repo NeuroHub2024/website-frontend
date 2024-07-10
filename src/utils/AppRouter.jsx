@@ -86,7 +86,7 @@ const AppRouter = () => {
                 <SideBar />
                 <Routes>
                   <Route path='/' element={<DashboardComponents />} />
-                  <Route path='/assignment' element={<Assignment />} />
+                  <Route path='/assignment/:id' element={<Assignment />} />
                   <Route path='/batch/:id' element={<Batch />} />
                   <Route path='/batches' element={<Batches />} />
                   <Route path='/lecture/:lectureId' element={<Lecture />} />
@@ -104,7 +104,6 @@ const AppRouter = () => {
               <Route path='/' element={<Home />} />
               <Route path='/login' element={<Login onLoginSuccess={handleLoginSuccess} />} />
               <Route path='/Signup' element={<Signup />} />
-              <Route path='/assignment' element={<Assignment />} />
             </Routes>
           )}
         </BrowserRouter>

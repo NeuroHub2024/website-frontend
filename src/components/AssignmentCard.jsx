@@ -1,24 +1,33 @@
 import { Link } from "react-router-dom";
 import styles from "../styles/AssignmentCard.module.css";
+import { Spin } from "antd";
 
-const AssignmentCard = () => {
+const AssignmentCard = ({ assignment }) => {
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
   return (
-    <div className={styles.headingContainer}>
-      <div className={styles.left}>
-        <div className={styles.icon}>
-          <i className="fa-solid fa-file-lines fa-xl"></i>
+    <>
+      {assignment ? <div className={styles.headingContainer}>
+        <div className={styles.left}>
+          <div className={styles.icon}>
+            <i className="fa-solid fa-file-lines fa-xl"></i>
+          </div>
+          <div>
+            <div className={styles.title}>
+              {assignment.title}
+            </div>
+            <Link className={styles.viewLink} to={`/assignment/${assignment._id}`}>View Assignment</Link>
+          </div>
         </div>
-        <div>
-        <div className={styles.title}>
-          Assignment-I : Learning Flexbox in CSS
+        <div className={styles.subtitle}>
+          <span> Due : {formatDate(assignment.due)}</span>
         </div>
-        <Link className={styles.viewLink} to={"/assignment"}>View Assignment</Link>
-        </div>
-      </div>
-      <div className={styles.subtitle}>
-        <span> Due : 18/06/2024</span>
-      </div>
-    </div>
+      </div> :
+        <Spin />
+      }
+    </>
   );
 };
 
