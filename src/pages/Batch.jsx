@@ -95,9 +95,9 @@ const Batches = () => {
                         </div>
 
                         <div className="batch-content-seletor-container">
-                            <div className={materialClass} onClick={() => handleSetComponent("Material", batch._id, batch.assignments, batch.lectures, [])}><span> Lectures</span> </div>
-                            <div className={announcementClass} onClick={() => handleSetComponent("Announcement", batch._id, batch.assignments, batch.lectures, [])}><span>Announcement</span></div>
-                            <div className={assignmentClass} onClick={() => handleSetComponent("Assignment", batch._id, batch.assignments, batch.lectures, [])}><span>Assignment</span></div>
+                            <div className={materialClass} onClick={() => handleSetComponent("Material", batch._id, batch.assignments, batch.lectures, batch.announcements)}><span> Lectures</span> </div>
+                            <div className={announcementClass} onClick={() => handleSetComponent("Announcement", batch._id, batch.assignments, batch.lectures, batch.announcements)}><span>Announcement</span></div>
+                            <div className={assignmentClass} onClick={() => handleSetComponent("Assignment", batch._id, batch.assignments, batch.lectures, batch.announcements)}><span>Assignment</span></div>
                         </div>
 
                         <div className="batch-button-selected-content">

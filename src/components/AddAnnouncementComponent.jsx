@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { Typography } from 'antd'
+import { DatePicker, Typography } from 'antd'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
     Button,
     Form,
     Input,
     Select,
 } from 'antd';
+import Cookies from 'js-cookie';
 import { Spin } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 const formItemLayout = {
@@ -31,23 +32,48 @@ const formItemLayout = {
 
 const AddAnnouncementComponent = () => {
     const navigate = useNavigate();
+    const params = useParams();
 
     const [title, setTitle] = useState("");
-    const [content, setContent] = useState();
+    const [message, setMessage] = useState();
+    const [date, setDate] = useState();
     const [loading, setLoading] = React.useState(false);
 
     const handleOnClick = async (e) => {
         e.preventDefault();
 
-        const batch = {
-            title,
-            content
+        const announcement = {
+            title: title,
+            message: message,
+            date: date,
+            batchId: params.batchId
         }
+
         setLoading(true);
         try {
-            // const res = await axios.post('https://gateway-mpfy.onrender.com/batch/', batch);
-            // console.log(res.data);
-            alert("Lecture Added Successfully " + title + " " + content);
+            const token = Cookies.get('token');
+            const { data } = await axios.post('https://gateway-mpfy.onrender.com/announcement/', announcement, {
+                withCredentials: true,
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            // console.log(data);
+            const announcementId = data._id;
+
+            const res = await axios.post(
+                `https://gateway-mpfy.onrender.com/batch/${params.batchId}/announcement/${announcementId}`,
+                {},
+                {
+                    withCredentials: true, headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+            );
+
+            console.log(res.data);
+
+            navigate(`/batch/${params.batchId}`)
         }
         catch (err) {
             console.log(err);
@@ -84,16 +110,17 @@ const AddAnnouncementComponent = () => {
                                 <Input value={title} onChange={(e) => setTitle(e.target.value)} />
                             </Form.Item>
                             <Form.Item
-                                label="Content"
-                                title="content"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please input!',
-                                    },
-                                ]}
+                                label="Date"
+                                name="date"
+
                             >
-                                <TextArea rows={4} value={content} onChange={(e) => setContent(e.target.value)} />
+                                <DatePicker value={date} onChange={(date, dateString) => setDate(dateString)} />
+                            </Form.Item>
+                            <Form.Item
+                                label="Message"
+                                title="Message"
+                            >
+                                <TextArea rows={4} value={message} onChange={(e) => setMessage(e.target.value)} />
                             </Form.Item>
 
 

@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import React, { useState } from 'react'
 import { Typography } from 'antd'
 import axios from 'axios';
@@ -38,15 +39,20 @@ const AddLectureComponent = () => {
     const handleOnClick = async (e) => {
         e.preventDefault();
 
-        const batch = {
-            title,
-            url
+        const lecture = {
+            url: url,
+            title: title,
         }
         setLoading(true);
         try {
-            // const res = await axios.post('https://gateway-mpfy.onrender.com/batch/', batch);
-            // console.log(res.data);
-            alert("Lecture Added Successfully " + title + " " + url);
+            const token = Cookies.get('token');
+            const { data } = await axios.post('https://gateway-mpfy.onrender.com/lecture/', lecture, {
+                withCredentials: true,
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            console.log(data);
         }
         catch (err) {
             console.log(err);
