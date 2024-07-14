@@ -38,7 +38,7 @@ const AddBatchesComponent = () => {
             const res = await axios.post('https://gateway-mpfy.onrender.com/batch/', batch, {
                 withCredentials: true,
                 headers: {
-                    'Cookie': `token=${token}`
+                    'Authorization': `Bearer ${token}`
                 }
             });
             console.log(res.data);

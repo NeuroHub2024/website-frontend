@@ -19,6 +19,7 @@ import { useEffect, useState } from 'react';
 import Lecture from '../pages/Lecture.jsx';
 import Cookies from 'js-cookie';
 import Logout from '../pages/Logout.jsx';
+import TestStart from '../pages/TestStart.jsx'
 
 export const lightTheme = {
   token: {
@@ -90,12 +91,13 @@ const AppRouter = () => {
                   <Route path='/batch/:id' element={<Batch />} />
                   <Route path='/batches' element={<Batches />} />
                   <Route path='/lecture/:lectureId' element={<Lecture />} />
-                  <Route path='/Test' element={<WebcamFaceDetection />} />
+                  <Route path='/test' element={<TestStart />} />
                   <Route path='/add-batch' element={<AddBatchesComponent />} />
                   <Route path='/add-assignment/:batchId' element={<AddAssignmentComponent />} />
                   <Route path='/add-lecture' element={<AddLectureComponent />} />
                   <Route path='/add-announcement' element={<AddAnnouncementComponent />} />
                   <Route path='/logout' element={<Logout />} />
+                  <Route path='*' element={<h1>Not found</h1>} />
                 </Routes>
               </Layout>
             </>
