@@ -95,7 +95,7 @@ const AppRouter = () => {
                   <Route path='/add-batch' element={<AddBatchesComponent />} />
                   <Route path='/add-assignment/:batchId' element={<AddAssignmentComponent />} />
                   <Route path='/add-lecture' element={<AddLectureComponent />} />
-                  <Route path='/add-announcement' element={<AddAnnouncementComponent />} />
+                  <Route path='/add-announcement/:batchId' element={<AddAnnouncementComponent />} />
                   <Route path='/logout' element={<Logout />} />
                   <Route path='*' element={<h1>Not found</h1>} />
                 </Routes>
